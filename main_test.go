@@ -22,3 +22,20 @@ func TestHelloHandler(t *testing.T) {
 		t.Errorf("expected body 'Hello, World!', got '%s'", body)
 	}
 }
+
+func TestHelloJenkinsHandler(t *testing.T) {
+	req := httptest.NewRequest("GET", "http://localhost:8080/jenkins", nil)
+	w := httptest.NewRecorder()
+
+	helloJenkinsHandler(w, req)
+
+	resp := w.Result()
+	if resp.StatusCode != http.StatusOK {
+		t.Errorf("expected status 200, got %d", resp.StatusCode)
+	}
+
+	body := w.Body.String()
+	if body != "Hello, Jenkins!" {
+		t.Errorf("expected body 'Hello, Jenkins!', got '%s'", body)
+	}
+}
