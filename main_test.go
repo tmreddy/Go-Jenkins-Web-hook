@@ -39,5 +39,3 @@ func TestHelloJenkinsHandler(t *testing.T) {
 		t.Errorf("expected body 'Hello, Jenkins!', got '%s'", body)
 	}
 }
-
-
